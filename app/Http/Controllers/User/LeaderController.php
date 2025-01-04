@@ -179,13 +179,40 @@ class LeaderController extends Controller
         return view('leader.DetailChk', ['round' => $round, 'type' => $type], compact('formview', 'formchk_date', 'formName', 'DetailData'));
     }
 
-    public function ReportAllPlate ()
+    public function ReportAllPlate ($id)
     {
+        if ($id == 'all')
+        {
         $chk_truck = DB::table('chk_truck_part2s')
         ->select('chk_truck_part2s.truck_id','plate_top','plate_bottom','chk_result','date_chk','chk_truck_part2s.round_id')
         ->join('truck_data','chk_truck_part2s.truck_id','=','truck_data.truck_id')
         ->orderBy('chk_truck_part2s.created_at','DESC')
         ->get();
+        }elseif ($id == '1')
+        {
+            $chk_truck = DB::table('chk_truck_part2s')
+            ->select('chk_truck_part2s.truck_id','plate_top','plate_bottom','chk_result','date_chk','chk_truck_part2s.round_id')
+            ->join('truck_data','chk_truck_part2s.truck_id','=','truck_data.truck_id')
+            ->where('chk_truck_part2s.chk_result','=','1')
+            ->orderBy('chk_truck_part2s.created_at','DESC')
+            ->get();
+        }elseif ($id == '2')
+        {
+            $chk_truck = DB::table('chk_truck_part2s')
+            ->select('chk_truck_part2s.truck_id','plate_top','plate_bottom','chk_result','date_chk','chk_truck_part2s.round_id')
+            ->join('truck_data','chk_truck_part2s.truck_id','=','truck_data.truck_id')
+            ->where('chk_truck_part2s.chk_result','=','2')
+            ->orderBy('chk_truck_part2s.created_at','DESC')
+            ->get();
+        }elseif ($id == '0')
+        {
+            $chk_truck = DB::table('chk_truck_part2s')
+            ->select('chk_truck_part2s.truck_id','plate_top','plate_bottom','chk_result','date_chk','chk_truck_part2s.round_id')
+            ->join('truck_data','chk_truck_part2s.truck_id','=','truck_data.truck_id')
+            ->where('chk_truck_part2s.chk_result','=','0')
+            ->orderBy('chk_truck_part2s.created_at','DESC')
+            ->get();
+        }
 
         return view('leader.Report_AllPlate',compact('chk_truck'));
     }
@@ -194,16 +221,45 @@ class LeaderController extends Controller
     {
         
         $detail_part1 = DB::table('chk_truck_part1s')
-        ->select('chk_truck_part1s.transport_id','chk_truck_part1s.truck_id','chk_truck_part1s.form_id','plate_top','plate_bottom','ts_name','form_type_name','chk_round','form_name','img_1','img_2','img_3','img_4','img_5','img_6','img_7','img_8')
+        ->select('chk_truck_part1s.transport_id','chk_truck_part1s.truck_id','chk_truck_part1s.form_id','driver_prefix','driver_name','driver_lastname','driver_phone','driver_id','insure_name','plate_top','plate_bottom','ts_name','form_type_name','chk_round','form_name','img_1','img_2','img_3','img_4','img_5','img_6','img_7','img_8')
         ->join('truck_data','chk_truck_part1s.truck_id','=','truck_data.truck_id')
         ->join('form_chks' , 'chk_truck_part1s.form_id', '=', 'form_chks.form_id')
         ->join('tran_sport_data', 'chk_truck_part1s.transport_id', '=', 'tran_sport_data.id')
         ->join('form_types' , 'truck_data.truck_type', '=', 'form_types.id')
         ->where('chk_truck_part1s.round_id','=',$round)
         ->first();
-
       
-
         return view('leader.TruckChkDetail1', ['round' => $round,'truck'=>$truck],compact('detail_part1'));
+    }
+
+    public function TruckChkDetail2($round,$truck)
+    {
+        $form_data = DB::table('chk_truck_part1s')
+        ->select('ts_name','form_name','form_code','driver_prefix','driver_name','driver_lastname','driver_phone','insure_name','plate_top','plate_bottom',
+        'date_truck_enroll','truck_insure_expired','truck_tax_expired','weight_max','weight_all','truck_fuel','chk_truck_part1s.created_at')
+        ->join('form_chks', 'chk_truck_part1s.form_id','=','form_chks.form_id')
+        ->join('truck_data','chk_truck_part1s.truck_id','=','truck_data.truck_id')
+        ->join('tran_sport_data','truck_data.transport_id','=','tran_sport_data.id')
+        ->where('chk_truck_part1s.round_id','=',$round)
+        ->get();
+
+        $cate_data = DB::table('chk_truck_part1s')
+        ->select('category_name','category_id')
+        ->join('form_categories','chk_truck_part1s.form_id','=','form_categories.form_id')
+        ->where('chk_truck_part1s.round_id','=',$round)
+        ->get();
+
+        $chk_result = DB::table('chk_truck_part2s')
+        ->select('chk_result','renew_chk_date')
+        ->where('round_id','=',$round)
+        ->get();
+
+        $person_chk = DB::table('chk_truck_part2s')
+        ->select('chk_truck_part2s.user_id','fullname','chk_truck_part2s.date_chk')
+        ->join('user_details','chk_truck_part2s.user_id','=','user_details.user_id')
+        ->where('chk_truck_part2s.round_id','=',$round)
+        ->get();
+
+        return view('leader.TruckChkDetail2',['round' => $round,'truck'=>$truck],compact('form_data','cate_data','chk_result','person_chk'));
     }
 }

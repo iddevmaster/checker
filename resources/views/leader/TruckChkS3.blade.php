@@ -55,7 +55,7 @@ $end_date   = 31;
                               <tr>
                                 <th class="text-primary"> สรุปผลการตรวจ </th>
                                 <td >
-         <form action="{{route('leader_TruckInsert3')}}" method="POST">
+<form action="{{route('leader_TruckInsert3')}}" method="POST">
             @csrf
 <input type="hidden" name="round_id" value="{{request()->round}}">
 <input type="hidden" name="tran_id" value="{{$item->transport_id}}">
@@ -104,6 +104,14 @@ $end_date   = 31;
                                       </div>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td><strong>กำหนดระยะเวลาตรวจสภาพใหม่ วันที่</strong>
+                                </td>
+                                <td> 
+                                    <input type="date" class="form-control" name="renew_chk_date">
+                                </td>
+                              </tr>
 
                             <tr>
                                 <th>ผู้ตรวจ</th>

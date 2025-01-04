@@ -276,6 +276,12 @@ class LeaderConfigController extends Controller
             'transport_id' =>  $request->transport_id,
             'truck_id' => $truckid,
             'form_id' =>  $request->form_id,
+            'driver_prefix' => $request->driver_prefix,
+            'driver_name' => $request->driver_name,
+            'driver_lastname' => $request->driver_lastname,
+            'driver_phone' => $request->driver_phone,
+            'driver_id' => $request->driver_id,
+            'insure_name' => $request->insure_name,
             'chk_round' =>  '1',
             'img_1' =>  $rename_file1,
             'img_2' =>  $rename_file2,
@@ -399,13 +405,12 @@ class LeaderConfigController extends Controller
             'round_id' =>$request->round_id,
             'date_chk' => $date_all_chk,
             'chk_result' => $request->final_chk,
+            'renew_chk_date' => $request->renew_chk_date,
             'created_at' => Carbon::now()
         ]);
 
         return redirect()->route('leader_listplatetotal')->with('success', 'ตรวจรถสำเร็จ');
     }
-
-  
-
+ 
 
 }

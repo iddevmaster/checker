@@ -23,6 +23,21 @@
 
                                 </tr>
                                 <tr>
+                                    <td scope="row" width="50%"><strong>ชื่อผู้ขับขี่ </strong>: {{ $detail_part1->driver_prefix }} {{ $detail_part1->driver_name }} {{ $detail_part1->driver_lastname }}
+
+                                    </td>
+                                    <td><strong>เบอร์โทรศัพท์</strong> : {{ $detail_part1->driver_phone }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td><strong>เลขที่ใบขับขี่</strong> : {{ $detail_part1->driver_id }}</td>
+                                    <td scope="row" width="50%"><strong>บริษัทประกัน </strong>: {{ $detail_part1->insure_name }}
+
+                                    </td>
+                                 
+
+                                </tr>
+                                <tr>
                                     <td scope="row"><strong>ตรวจรถโดย</strong> : {{ Auth::user()->name }} </td>
                                     <td><strong>ตรวจครั้งที่</strong> : {{ $detail_part1->chk_round }}</td>
 
@@ -133,7 +148,7 @@
         </tbody>
     </table>
     <div class="d-grid gap-2 col-6 mx-auto">
-    <a href="#" class="btn btn-success">ถัดไป <i class="las la-angle-double-right"></i></a>
+    <a href="{{route('leader_TruckChkDetail2',['round'=>request()->round,'truck'=>request()->truck])}}" class="btn btn-success">ถัดไป <i class="las la-angle-double-right"></i></a>
     </div>
                     </div>
                 </div>

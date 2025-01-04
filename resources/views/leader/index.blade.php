@@ -84,7 +84,7 @@
                                       </li>  
                                       
                                       <li class="list-group-item">
-                                        <a href="{{route('leader_reportall')}}" class="btn btn-sm btn-outline-primary">
+                                        <a href="{{route('leader_reportall',['id'=>'all'])}}" class="btn btn-sm btn-outline-primary">
                                         สรุปรายการตรวจเช็ค</a>
                                       </li>    
                                       

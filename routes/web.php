@@ -204,9 +204,11 @@ Route::prefix('leader')->group(function(){
    Route::POST('/TruckInsert3',[LeaderConfigController::class, 'TruckInsert3'])->name('leader_TruckInsert3');
 
    //รายงานตรวจรถ
-   Route::get('/reportall',[LeaderController::class, 'ReportAllPlate'])->name('leader_reportall');
+   Route::get('/reportall/{id}',[LeaderController::class, 'ReportAllPlate'])->name('leader_reportall');
 
    Route::get('/truckdetail1/{round}/{truck}',[LeaderController::class, 'TruckChkDetail1'])->name('leader_TruckChkDetail1');
+
+   Route::get('/truckdetail2/{round}/{truck}',[LeaderController::class, 'TruckChkDetail2'])->name('leader_TruckChkDetail2');
 
 
    //qrcode

@@ -8,10 +8,11 @@
                     <div class="card-header">รายการทะเบียนรถทั้งหมด</div>
                     <div class="card-body">
                         <p class="fw-bold">สถานะผลการตรวจ</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-primary">ปกติ</button>
-                            <button type="button" class="btn btn-outline-secondary">ไม่ปกติ แต่สามารถใช้งานได้</button>
-                            <button type="button" class="btn btn-outline-danger">ไม่ปกติ ไม่อนุญาตให้ใช้งาน</button>
+                        <div class="btn-group btn-group-sm mb-3" role="group" >
+                            <a href="{{route('leader_reportall',['id'=>'all'])}}" class="btn btn-outline-success">ทั้งหมด</a>
+                            <a href="{{route('leader_reportall',['id'=>'1'])}}" class="btn btn-outline-primary">ปกติ</a>
+                            <a href="{{route('leader_reportall',['id'=>'2'])}}" class="btn btn-outline-secondary">ไม่ปกติ แต่สามารถใช้งานได้</a>
+                            <a href="{{route('leader_reportall',['id'=>'0'])}}" class="btn btn-outline-danger">ไม่ปกติ ไม่อนุญาตให้ใช้งาน</a>
                           </div>
                        
                         <table class="table table-responsive cell-border" id="dataTables">

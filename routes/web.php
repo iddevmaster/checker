@@ -37,7 +37,12 @@ Route::get('/sso_login/{user}', [App\Http\Controllers\ssoController::class, 'sso
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function(){
-    Route::get('/dashboard',[AdminHomeController::class, 'index'])->name('admin_index');   
+    Route::get('/dashboard',[AdminHomeController::class, 'index'])->name('admin_index');
+    
+    //role_สิทธิ์การใช้งาน
+    Route::get('/listrole',[AdminConfigController::class, 'ListRole'])->name('admin_ListRole');
+    Route::post('/insertnewrole',[AdminConfigController::class, 'InsertNewRole'])->name('admin_insertnewrole');
+    Route::get('/ConfigRole/{id}',[AdminConfigController::class, 'ConfigRole'])->name('admin_ConfigRole');
     
     //ฟอร์มเช็ค     
     Route::get('/form',[AdminHomeController::class, 'list_form'])->name('admin_form');

@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Laravel\Facades\Image;
-
+use Yajra\DataTables\DataTables;
 
 class AdminConfigController extends Controller
 {
@@ -94,5 +94,49 @@ class AdminConfigController extends Controller
 
         return redirect()->route('admin_ConfigForm',['id'=>$agent_id])->with('success','ดำเนินการสำเร็จ');      
     }
+
+    public function ListRole()
+    {
+        $listrole = DB::table('role')  
+        ->get();
+
+        return view('admin.ListRole',compact('listrole'));
+    }
+
+    public function InsertNewRole(Request $request)
+    {
+        $role_name = $request->role_name;
+
+        DB::table('role')->insert([
+            'role_name' => $role_name,
+            'created_at' => Carbon::now()
+        ]);
+        return redirect()->route('admin_ListRole')->with('success','บันทึกเรียบร้อยแล้ว');
+    }
+
+    public function ConfigRole ($id) {
+        $agent = DB::table('user_details')
+        ->where('user_id','=',$id)
+        ->get();
+
+        $agent_role = DB::table('company_role')->select('company_role')
+        ->where('user_id','=',$id);
+      
+        $role_list = DB::table('role')
+        ->whereNotIn('id', $agent_role)
+        ->get();
+
+        $role_agent_list = DB::table('role')
+        ->leftJoin('company_role','role.id','=','company_role.company_role')
+        ->select('role.role_name','company_role.*')
+        ->where('company_role.company_role','=',$id)
+        ->get();
+
+        return view('admin.ConfigRole',['id'=>$id],compact('role_list','agent','role_agent_list'));
+    }
+
+    //public function InsertConfigRole ($id,Request $request) 
+   // {
+   //}
 
 }

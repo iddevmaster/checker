@@ -32,10 +32,28 @@
                           </select>
                         </div>
 
+                        <div class="mb-3">
+                          <label for="form_type" class="form-label">สิทธิ์ใช้งาน</label>
+                            <!--@if (session('error'))
+                                <div class="alert alert-danger">
+                                  {{ $message }}
+                                </div>
+                            @endif-->
+                          @foreach ($data_role as $row)
+                          <div class="form-check">                           
+                            <input class="form-check-input" type="checkbox" id="role_{{ $row->id }}" name="roles[]" value="{{ $row->id }}">
+                            <label class="form-check-label" for="role_{{ $row->id }}">{{ $row->role_name }}</label>                         
+                        
+                          </div>
+                          @endforeach
+                        </div>
+
+
+                        
+
                         <table class="table table-bordered" id="dynamicTable">
                           <thead>
-                            <tr>
-                             
+                            <tr>                             
                               <th scope="col">ชื่อหมวดหมู่</th>
                               <th scope="col">เพิ่ม/ลบ</th>
                             </tr>

@@ -3,7 +3,6 @@
 @section('content')
     <div class="container-fluid">
 
-
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -14,13 +13,13 @@
                             <a href="{{ route('admin_create_form') }}" class="btn btn-sm btn-primary">สร้างฟอร์มใหม่</a>
                         </p>
 
-
                         <table class="table table-bordered" id="dataTables">
                             <thead class="table-primary">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">ชื่อฟอร์ม</th>
                                     <th>สถานะ</th>
+                                    <th>สิทธิ์</th>
                                     <th scope="col">ตั้งค่า</th>
                                 </tr>
                             </thead>
@@ -42,17 +41,16 @@
                                                 <span class="badge text-bg-warning">ปิด</span>
                                             @endif
                                         </td>
+                                        <td> {{$item->role_name}} </td>
                                         <td>
+                                            <div class="btn-group" role="group">
                                             <a href="{{ route('admin_formDetail', ['id' => $item->form_id]) }}"
-                                                class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                                data-bs-title="รายละเอียด">
+                                                class="btn btn-sm btn-primary" >
                                                 <i class="las la-list"></i>
                                             <a href="{{ route('admin_formDetail', ['id' => $item->form_id]) }}"
-                                                class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                                data-bs-title="ปิดการใช้งาน">
+                                                class="btn btn-sm btn-danger" >
                                                 <i class="las la-times-circle"></i>
+                                            </a>
                                             </a>
                                         </td>
 

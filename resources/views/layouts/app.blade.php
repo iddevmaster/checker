@@ -17,7 +17,7 @@
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- Scripts -->
@@ -90,17 +90,22 @@ $company_logo = DB::table('user_details')
                             </li>
                             <li class="nav-item">
                                 <a class=" btn btn-sm btn-outline-secondary nav-link"
-                                    href="{{ route('admin_Userlist') }}">รายชื่อผู้ใช้</a>
+                                    href="{{ route('admin_Userlist') }}"> <i class="las la-user"></i> รายชื่อผู้ใช้</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class=" btn btn-sm btn-outline-secondary nav-link"
+                                    href="{{ route('admin_ListRole') }}"><i class="las la-list-alt"></i> สิทธิ์การใช้งาน</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="btn btn-sm btn-outline-secondary nav-link"
-                                    href="{{ route('admin_form') }}">ฟอร์ม</a>
+                                    href="{{ route('admin_form') }}"><i class="las la-file-alt"></i> ฟอร์ม</a>
                             </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="las la-cog"></i> 
                                     Config
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark"
@@ -149,7 +154,7 @@ $company_logo = DB::table('user_details')
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="las la-user-circle"></i>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -192,8 +197,8 @@ $company_logo = DB::table('user_details')
     @endif
 
 
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.js"></script>
     <script>
         $(function() {
             $("#dataTables").DataTable({

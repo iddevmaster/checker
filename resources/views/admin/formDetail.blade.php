@@ -11,7 +11,7 @@
          
                 <div class="card-body">
                    @foreach ($formName as $row)       
-                    <p class="text-primary">ชื่อฟอร์ม :: {{$row->form_name}}</p>
+                    <p style="#">ชื่อฟอร์ม :: {{$row->form_name}}</p>
                     <a href="{{route('admin_formPreview',['id'=>$row->form_id])}}" class="btn btn-sm btn-outline-success">
                         <i class="las la-clipboard-check"></i> ตัวอย่างฟอร์ม
                     </a>
@@ -30,7 +30,7 @@
                             <th scope="row">@php
                                 echo $i++;
                             @endphp</th>
-                            <td><a href="{{route('admin_formDetailChoice',['id'=>$item->category_id])}}">{{$item->category_name}}</a></td>
+                            <td><a class="text-decoration-none" href="{{route('admin_formDetailChoice',['id'=>$item->category_id])}}">{{$item->category_name}}</a></td>
                             <td>  
                                  <div class="btn-group btn-group-sm" role="group" >
                                     

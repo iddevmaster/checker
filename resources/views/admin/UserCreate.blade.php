@@ -65,6 +65,35 @@
                             </div>
                         </div>
 
+                        <hr>
+
+                        <div class="row mb-3">
+                            <label for="Role" class="col-md-4 col-form-label text-md-end">สิทธิ์การใช้งาน</label>
+                            <div class="col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="chk_type" value="1">
+                                    <label class="form-check-label" for="inlineCheckbox1">แบบตรวจสภาพรถ(ปูน) </label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="chk_type" value="4">
+                                    <label class="form-check-label" for="inlineCheckbox4">แบบตรวจสภาพรถยนต์</label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="chk_type" value="2">
+                                    <label class="form-check-label" for="inlineCheckbox2">แบบตรวจเอกสาร</label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="chk_type" value="3">
+                                    <label class="form-check-label" for="inlineCheckbox3">แบบตรวจสต๊อกสินค้า</label>
+                                  </div>
+                                 
+                            </div>
+                        </div>
+
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

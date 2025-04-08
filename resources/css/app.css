@@ -1,0 +1,42 @@
+.progresses{
+    display: flex;
+        align-items: center;
+   }
+
+   .line{
+    width: 120px;
+    height: 6px;
+    background: #63d19e;
+   }
+
+   .line-pending{
+
+    width: 120px;
+    height: 5px;
+    background: #c0c0c0;
+   }
+   
+   .steps{
+
+    display: flex;
+    background-color: #63d19e;
+    color: #fff;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+   }
+
+   .steps-pending{
+    display: flex;
+    background-color: #c0c0c0;
+    color: #fff;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+   }

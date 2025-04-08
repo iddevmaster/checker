@@ -10,7 +10,7 @@
 
                     <div class="card-body">
                         <p class="mb-4">
-                            <a href="{{ route('admin_create_form') }}" class="btn btn-sm btn-primary">สร้างฟอร์มใหม่</a>
+                            <a href="{{ route('admin_create_form1') }}" class="btn btn-sm btn-primary">สร้างฟอร์มใหม่</a>
                         </p>
 
                         <table class="table table-bordered" id="dataTables">

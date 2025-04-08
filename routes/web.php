@@ -46,7 +46,10 @@ Route::prefix('admin')->group(function(){
     
     //ฟอร์มเช็ค     
     Route::get('/form',[AdminHomeController::class, 'list_form'])->name('admin_form');
-    Route::get('/create_form',[AdminHomeController::class, 'create_form'])->name('admin_create_form');
+    Route::get('/create_form_part1',[AdminHomeController::class, 'create_form1'])->name('admin_create_form1');
+    Route::post('/insert_form_part1',[AdminHomeController::class, 'insert_form_part1'])->name('admin_insert_form_part1');
+
+    Route::get('/create_form/{id}',[AdminHomeController::class, 'create_form'])->name('admin_create_form');
     Route::post('/insert_form',[AdminHomeController::class, 'insert_form'])->name('admin_insert_form');
     Route::get('/frmDetail/{id}',[AdminHomeController::class, 'formDetail'])->name('admin_formDetail');
     Route::get('/frmPreview/{id}',[AdminHomeController::class, 'formPreview'])->name('admin_formPreview');

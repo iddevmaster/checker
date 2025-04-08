@@ -35,38 +35,73 @@ class AdminHomeController extends Controller
         return view('admin.list_form', compact('list_form'));
     }
 
-    public function create_form()
+    public function create_form1()
     {
+
+        $data_role = DB::table('role')
+        ->get();
+
+
+        return view('admin.create_form1', compact('data_role'));
+    }
+
+    public function create_form($id)
+    {
+        $data_form = DB::table('form_chks')       
+        ->select('form_chks.form_name')
+        ->where('form_chks.form_id', '=', $id)
+        ->get();
+
+        $data_role = DB::table('role_forms')
+        ->join('role','role_forms.role_id','=','role.id')
+        ->where('role_forms.form_id','=',$id)
+        ->get();
+        
 
         $data_type = DB::table('form_types')
             ->get();
 
-        $data_role = DB::table('role')
-            ->get();
-
-        return view('admin.create_form', compact('data_type', 'data_role'));
+        return view('admin.create_form', compact('data_type', 'data_form','data_role'));
     }
 
-    public function insert_form(Request $request)
+    public function insert_form_part1(Request $request)
     {
         $form_id = Str::upper(Str::random(15));
         $id = Auth::user()->user_id;
 
-        $varidateData = $request->validate([
+        $this->validate($request, [
             'roles' => 'required',
-        ],
-        [
-            'roles.required' => 'กรุณาเลือก' 
-        ]
-    );
+            'form_name' => 'required|string',
+        ], [
+            'roles.required' => 'กรุณาเลือกสิทธิ์การใช้งาน',
+            'form_name.required'  => 'กรุณาใส่ชื่อฟอร์ม',
+        ]);
+
+        foreach ($request->roles as $val) {
+            DB::table('role_forms')->insert([
+                'role_id' => $val,
+                'form_id' => $form_id,
+                'created_at' => Carbon::now()
+            ]);
+        }
 
         DB::table('form_chks')->insert([
             'user_id' => $id,
             'form_id' => $form_id,
             'form_name' => $request->form_name,
+            'created_at' => Carbon::now()
+        ]);
+        
+        return redirect()->route('admin_create_form', ['id' => $form_id]);
+        
+    }
+
+    public function insert_form(Request $request, $form_id)
+    {
+
+        DB::table('form_chks')->insert([
             'form_type' => $request->form_type,
             'form_category' => $request->form_category,
-            'created_at' => Carbon::now()
         ]);
 
         foreach ($request->category_name as $key => $value) {
@@ -79,28 +114,8 @@ class AdminHomeController extends Controller
             ]);
         }
 
-        $roles = $request->input('roles');
 
-        if ($roles == null) {
-            return redirect()->route('admin_create_form')->with('error', 'กรุณาเลือกสิทธิ์การใช้งาน');
-        } elseif ($roles >= '1') {
-            
-            foreach ($request->roles as $val) { 
-                //     $role_id = $request->roles;               
-                     DB::table('role_forms')->insert([
-                         'role_id' => $val,
-                         'form_id' => $form_id,
-                         'created_at' => Carbon::now()
-                     ]);
-                 }    
-
-               
-
-                return redirect()->route('admin_form')->with('success', 'สร้างฟอร์มเรียบร้อยแล้ว');
-        }
-
-
-       // return redirect()->route('admin_form')->with('success', 'สร้างฟอร์มเรียบร้อยแล้ว');
+        return redirect()->route('admin_form')->with('success', 'สร้างฟอร์มเรียบร้อยแล้ว');
     }
 
     public function formDetail($id)

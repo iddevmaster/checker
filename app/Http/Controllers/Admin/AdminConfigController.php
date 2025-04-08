@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Laravel\Facades\Image;
-use Yajra\DataTables\DataTables;
 
 class AdminConfigController extends Controller
 {

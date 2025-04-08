@@ -28,11 +28,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/chkdetail/{round}', [App\Http\Controllers\ssoController::class, 'ChkDetail'])->name('ChkDetail');
-
 Auth::routes();
-Route::get('/sso/{id}/{user}/{course}/{branch}', [App\Http\Controllers\ssoController::class, 'index'])->name('sso_regis');
-Route::get('/sso_login/{user}', [App\Http\Controllers\ssoController::class, 'ssoLogin'])->name('ssoLogin');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

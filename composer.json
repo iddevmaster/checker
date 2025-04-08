@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "E-Checker BY ID Drives",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
@@ -11,7 +11,10 @@
         "intervention/image-laravel": "^1.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "phattarachai/thaidate": "^12.1",
+        "simplesoftwareio/simple-qrcode": "^4.2",
+       
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",

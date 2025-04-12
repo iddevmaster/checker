@@ -7,9 +7,7 @@
                 <div class="card">
                     <div class="card-header">สร้างฟอร์มใหม่</div>
 
-                    <div class="card-body">
-
-                     
+                    <div class="card-body">                     
 
                         <form method="POST" action="{{route('admin_insert_form_part1')}}">
                             @csrf

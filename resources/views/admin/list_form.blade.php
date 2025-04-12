@@ -10,16 +10,17 @@
 
                     <div class="card-body">
                         <p class="mb-4">
-                            <a href="{{ route('admin_create_form1') }}" class="btn btn-sm btn-primary">สร้างฟอร์มใหม่</a>
+                            <a href="{{ route('admin_create_form1') }}" class="btn btn-primary">สร้างฟอร์มใหม่</a>
                         </p>
 
                         <table class="table table-bordered" id="dataTables">
                             <thead class="table-primary">
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th>สิทธิ์</th>
                                     <th scope="col">ชื่อฟอร์ม</th>
                                     <th>สถานะ</th>
-                                    <th>สิทธิ์</th>
+                                    
                                     <th scope="col">ตั้งค่า</th>
                                 </tr>
                             </thead>
@@ -33,6 +34,7 @@
                                             @php
                                                 echo $i++;
                                             @endphp</th>
+                                               <td> {{$item->role_name}} </td>
                                         <td>{{ $item->form_name }}</td>
                                         <td>
                                             @if ($item->form_status == '1')
@@ -41,7 +43,7 @@
                                                 <span class="badge text-bg-warning">ปิด</span>
                                             @endif
                                         </td>
-                                        <td> {{$item->role_name}} </td>
+                                     
                                         <td>
                                             <div class="btn-group" role="group">
                                             <a href="{{ route('admin_formDetail', ['id' => $item->form_id]) }}"

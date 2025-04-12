@@ -10,7 +10,7 @@
 
                     <div class="card-body">
                         <p class="mb-4">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-sm btn-primary">เพิ่มสิทธิ์ใหม่</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">เพิ่มสิทธิ์ใหม่</button>
                         </p>
 
 
@@ -32,7 +32,7 @@
                                             @php
                                                 echo $i++;
                                             @endphp</th>
-                                        <td><a href="" class="text-decoration-none">{{$item->role_name }}</a> </td>
+                                        <td><a href="{{ route('admin_roleDetail', ['id' => $item->id]) }}" class="text-decoration-none">{{$item->role_name }}</a> </td>
                                         <td>
                                             @if ($item->role_status == '1')
                                                 <span class="badge text-bg-success">ใช้งาน</span>

@@ -8,10 +8,9 @@
                     <div class="card-header">สร้างฟอร์มใหม่</div>
 
                     <div class="card-body">
+                   
 
-                    
-
-                        <form method="POST" action="{{ route('admin_insert_form') }}">
+    <form method="POST" action="{{ route('admin_insert_form') }}">
                             @csrf
                             @foreach ($data_form as $data)
                                 <div class="mb-2 mt-2">
@@ -26,7 +25,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-
+                            <input type="hidden" name="form_id" id="form_id" value="{{ request()->id }}">
                             <div class="mb-3">
                               <label for="form_category" class="fw-bold form-label">รหัสฟอร์ม (ถ้ามี)</label>
                               <input type="text" class="form-control" id="form_code" name="form_code" >

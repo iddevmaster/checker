@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/listrole',[AdminConfigController::class, 'ListRole'])->name('admin_ListRole');
     Route::post('/insertnewrole',[AdminConfigController::class, 'InsertNewRole'])->name('admin_insertnewrole');
     Route::get('/ConfigRole/{id}',[AdminConfigController::class, 'ConfigRole'])->name('admin_ConfigRole');
+    Route::get('/roleDetail/{id}',[AdminConfigController::class, 'RoleDetail'])->name('admin_roleDetail');
     
     //ฟอร์มเช็ค     
     Route::get('/form',[AdminHomeController::class, 'list_form'])->name('admin_form');

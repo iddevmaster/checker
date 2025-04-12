@@ -102,6 +102,27 @@ class AdminConfigController extends Controller
         return view('admin.ListRole',compact('listrole'));
     }
 
+    public function RoleDetail($id)
+    {
+        $roleDetail = DB::table('role')
+        ->join('role_forms','role.id','=','role_forms.role_id')
+        ->join('form_chks','role_forms.form_id','=','form_chks.form_id')
+        ->where('role.id', '=', $id)
+        ->get();
+
+        $roleName = DB::table('role')
+        ->where('role.id','=',$id)
+        ->first();
+
+    return view('admin.roleDetail', ['id' => $id], compact('roleDetail','roleName'));
+    }
+
+    public function RoleFormDelete ($id)
+    {
+        DB::table('role_forms')->where('form_id', '=', $id)
+        ->delete();
+    }
+
     public function InsertNewRole(Request $request)
     {
         $role_name = $request->role_name;

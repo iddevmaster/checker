@@ -32,6 +32,8 @@ class AdminHomeController extends Controller
             ->leftJoin('role', 'role_forms.role_id', '=', 'role.id')
             ->get();
 
+            
+
         return view('admin.list_form', compact('list_form'));
     }
 
@@ -96,16 +98,21 @@ class AdminHomeController extends Controller
         
     }
 
-    public function insert_form(Request $request, $form_id)
+    public function insert_form(Request $request)
     {
 
-        DB::table('form_chks')->insert([
+        $form_id = $request->form_id;
+
+        DB::table('form_chks')->where('form_id', '=', $form_id)
+        ->update([
+            'form_code' => $request->form_code,
             'form_type' => $request->form_type,
             'form_category' => $request->form_category,
+            'updated_at' => Carbon::now()
         ]);
 
         foreach ($request->category_name as $key => $value) {
-            $category_id = Str::upper(Str::random(12));
+            $category_id = Str::upper(Str::random(11));
             DB::table('form_categories')->insert([
                 'form_id' => $form_id,
                 'category_id' => $category_id,
@@ -114,9 +121,10 @@ class AdminHomeController extends Controller
             ]);
         }
 
-
         return redirect()->route('admin_form')->with('success', 'สร้างฟอร์มเรียบร้อยแล้ว');
     }
+
+   
 
     public function formDetail($id)
     {

@@ -41,14 +41,14 @@ $company_logo = DB::table('user_details')
     @if ($data->user_logo != '0')
     <img src="{{ asset($data->user_logo) }}" alt="..." height="60px">
     @elseif ($data->user_logo == '0')
-    <img src="{{ asset('images/logo_id.png') }}" alt="..." height="60px">
+    <img src="{{ asset('images/e-checker.png') }}" alt="..." height="60px">
     @endif
 @endforeach
                
 
                     @elseif (Auth::user()->role == 'admin')
 
-                    <img src="{{ asset('images/logo_id.png') }}" alt="..." height="60px">
+                    <img src="{{ asset('images/e-checker.png') }}" alt="..." width="150px">
 
                     @elseif (Auth::user()->role == 'leader')
                     @php
@@ -61,14 +61,14 @@ $company_logo = DB::table('user_details')
                         @if ($data->user_logo != '0')
                         <img src="{{ asset($data->user_logo) }}" alt="..." height="60px">
                         @elseif ($data->user_logo == '0')
-                        <img src="{{ asset('images/logo_id.png') }}" alt="..." height="60px">
+                        <img src="{{ asset('images/e-checker.png') }}" alt="..." width="150px">
                         @endif
                     @endforeach
                   
 
                     @elseif (Auth::user()->role == 'user')
 
-                    <img src="{{ asset('images/logo_id.png') }}" alt="..." height="60px">
+                    <img src="{{ asset('images/e-checker.png') }}" alt="..." width="150px">
                     @endif
 
                     

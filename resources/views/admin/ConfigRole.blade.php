@@ -16,11 +16,11 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="3">สิทธิ์การใช้งาน</th>
+                                    <th colspan="3">หมวดหมู่การใช้งาน</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">สิทธิ์</th>
+                                    <th scope="col">หมวดหมู่</th>
                                     <th scope="col">ตั้งค่า</th>
                                 </tr>
                             </thead>

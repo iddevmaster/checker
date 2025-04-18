@@ -35,11 +35,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminHomeController::class, 'index'])->name('admin_index');
     
-    //role_สิทธิ์การใช้งาน
+    //role_หมวดหมู่การใช้งาน
     Route::get('/listrole',[AdminConfigController::class, 'ListRole'])->name('admin_ListRole');
     Route::post('/insertnewrole',[AdminConfigController::class, 'InsertNewRole'])->name('admin_insertnewrole');
     Route::get('/ConfigRole/{id}',[AdminConfigController::class, 'ConfigRole'])->name('admin_ConfigRole');
     Route::get('/roleDetail/{id}',[AdminConfigController::class, 'RoleDetail'])->name('admin_roleDetail');
+    Route::get('/roleUnlist/{role}/{form}',[AdminConfigController::class, 'RoleUnlist'])->name('admin_roleUnlist');
+    Route::get('/addform/{role}',[AdminConfigController::class, 'add_form'])->name('admin_add_form');
+    Route::get('/roleaddform/{role}/{form}',[AdminConfigController::class, 'RoleAddForm'])->name('admin_roleaddform');
     
     //ฟอร์มเช็ค     
     Route::get('/form',[AdminHomeController::class, 'list_form'])->name('admin_form');

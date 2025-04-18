@@ -97,6 +97,7 @@ class AdminConfigController extends Controller
     public function ListRole()
     {
         $listrole = DB::table('role')  
+        ->orderBy('role.role_name','ASC')
         ->get();
 
         return view('admin.ListRole',compact('listrole'));
@@ -108,6 +109,7 @@ class AdminConfigController extends Controller
         ->join('role_forms','role.id','=','role_forms.role_id')
         ->join('form_chks','role_forms.form_id','=','form_chks.form_id')
         ->where('role.id', '=', $id)
+        ->orderBy('role_forms.created_at','ASC')
         ->get();
 
         $roleName = DB::table('role')
@@ -117,10 +119,43 @@ class AdminConfigController extends Controller
     return view('admin.roleDetail', ['id' => $id], compact('roleDetail','roleName'));
     }
 
-    public function RoleFormDelete ($id)
+    //เพิ่มฟอร์มในหมวดหมู่
+    public function add_form ($role)
     {
-        DB::table('role_forms')->where('form_id', '=', $id)
+
+        $form_selected = DB::table('form_chks')
+        ->join('role_forms','form_chks.form_id','=','role_forms.form_id')
+        ->select('role_forms.form_id')
+        ->where('role_forms.role_id',$role)->groupBy('role_forms.form_id');
+
+        $listform = DB::table('form_chks') 
+        ->whereNotIn('form_chks.form_id',$form_selected)      
+        ->get();
+
+        $roleName = DB::table('role')
+        ->where('role.id','=',$role)
+        ->first();
+
+        return view('admin.add_form',compact('listform','roleName'));
+    }
+
+    public function RoleAddForm ($role,$form)
+    {
+        DB::table('role_forms')->insert([
+            'role_id' => $role,
+            'form_id' => $form,
+            'created_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('admin_roleDetail',['id'=>$role])->with('success','บันทึกเรียบร้อยแล้ว');
+    }
+
+    public function RoleUnlist ($role,$form)
+    {
+        DB::table('role_forms')->where('form_id', '=', $form)
         ->delete();
+
+        return redirect()->route('admin_roleDetail', ['id' => $role])->with('success', 'ลบข้อมูลเรียบร้อยแล้ว');
     }
 
     public function InsertNewRole(Request $request)

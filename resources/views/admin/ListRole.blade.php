@@ -6,11 +6,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">สิทธิ์การใช้งานทั้งหมด</div>
+                    <div class="card-header">หมวดหมู่การใช้งานทั้งหมด</div>
 
                     <div class="card-body">
                         <p class="mb-4">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">เพิ่มสิทธิ์ใหม่</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">เพิ่มหมวดหมู่ใหม่</button>
                         </p>
 
 
@@ -18,7 +18,7 @@
                             <thead class="table-success">
                                 <tr>
                                     <th scope="col" class="text-center">#</th>
-                                    <th scope="col">ชื่อสิทธิ์</th>
+                                    <th scope="col">ชื่อหมวดหมู่</th>
                                     <th>สถานะ</th>
                                 </tr>
                             </thead>
@@ -60,14 +60,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">เพิ่มสิทธิ์ใหม่</h5>
+          <h5 class="modal-title" id="exampleModalLabel">เพิ่มหมวดหมู่ใหม่</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form action="{{ route('admin_insertnewrole')}}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">ชื่อสิทธิ์</label>
+                <label for="exampleFormControlInput1" class="form-label">ชื่อหมวดหมู่</label>
                 <input type="text" class="form-control" id="role_name" name="role_name">
               </div>                       
         </div>

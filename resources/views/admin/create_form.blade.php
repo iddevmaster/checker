@@ -18,7 +18,7 @@
                                 </div>
                             @endforeach
                             <div class="mb-3">
-                                <label for="form_name" class="fw-bold form-label">สิทธิ์การใช้งาน </label>
+                                <label for="form_name" class="fw-bold form-label">หมวดหมู่การใช้งาน </label>
                                 <ul>
                                     @foreach ($data_role as $store)
                                         <li> {{ $store->role_name }}</li>
@@ -33,7 +33,7 @@
                           </div>
 
                             <div class="mb-3">
-                                <label for="form_category" class="fw-bold form-label">จำนวนหมวดหมู่</label>
+                                <label for="form_category" class="fw-bold form-label">จำนวนหัวข้อหลัก</label>
                                 <input type="number" class="form-control" id="form_category" name="form_category" required>
                                 <div class="form-text">ระบุเป็นตัวเลขเท่านั้น</div>
                             </div>
@@ -53,7 +53,7 @@
                             <table class="table table-bordered" id="dynamicTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ชื่อหมวดหมู่</th>
+                                        <th scope="col">ชื่อหัวข้อหลัก</th>
                                         <th scope="col">เพิ่ม/ลบ</th>
                                     </tr>
                                 </thead>
@@ -62,7 +62,7 @@
                                         <td><input type="text" name="category_name[0]" placeholder="ระบุหมวดหมู่"
                                                 class="form-control form-control-sm" /></td>
                                         <td><button type="button" name="add" id="add"
-                                                class="btn btn-primary btn-sm">เพิ่มหมวดหมู่</button></td>
+                                                class="btn btn-primary btn-sm">เพิ่มหัวข้อหลัก</button></td>
                                     </tr>
                                 </tbody>
                             </table>

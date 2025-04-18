@@ -21,7 +21,7 @@
 
 
                             <div class="mb-3">
-                                <label for="form_type" class="fw-bold form-label">สิทธิ์ใช้งาน</label>
+                                <label for="form_type" class="fw-bold form-label">หมวดหมู่การใช้งาน</label>
 
                                 @error('roles')
                                 <p class="text-danger fw-bold"> {{ $message }}</p>

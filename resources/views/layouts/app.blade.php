@@ -10,19 +10,19 @@
 
     <title>E-Checker By ID Drives</title>
 
-    <!-- Fonts -->
-    <link rel= "stylesheet"
-        href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+     <!-- Fonts -->
+     <link rel= "stylesheet"
+     href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css'])  
-    <link rel="icon" href="{{ asset('favicon.png') }}">
+ <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+ <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css" />
+ <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+ <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+ <!-- Scripts -->
+ @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/css/app.css'])  
+ <link rel="icon" href="{{ asset('favicon.png') }}">
 </head>
 
 <body>
@@ -95,7 +95,7 @@ $company_logo = DB::table('user_details')
 
                             <li class="nav-item">
                                 <a class=" btn btn-sm btn-outline-secondary nav-link"
-                                    href="{{ route('admin_ListRole') }}"><i class="las la-list-alt"></i> สิทธิ์การใช้งาน</a>
+                                    href="{{ route('admin_ListRole') }}"><i class="las la-list-alt"></i> หมวดหมู่การใช้งาน</a>
                             </li>
 
                             <li class="nav-item">

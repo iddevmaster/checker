@@ -17,7 +17,7 @@
                             <thead class="table-primary">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th>สิทธิ์</th>
+                                    <th>หมวดหมู่</th>
                                     <th scope="col">ชื่อฟอร์ม</th>
                                     <th>สถานะ</th>
                                     

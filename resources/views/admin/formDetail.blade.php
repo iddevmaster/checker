@@ -20,7 +20,7 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">ชื่อหมวดหมู่</th>
+                            <th scope="col">ชื่อหัวข้อ</th>
                             <th scope="col">ตั้งค่า</th>
                           </tr>
                         </thead>
@@ -39,7 +39,7 @@
                                     data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                     data-bs-title="แก้ไขหมวดหมู่"
                                 ><i class="las la-pen"></i></a>
-                                <a href="{{ route('admin_CategoryDelete', ['cid' => $item->category_id , 'form_id'=>$item->form_id]) }}" class="btn btn-danger" onclick="return confirm('ข้อตรวจในหมวดหมู่จะถูกลบไปด้วย ยืนยันการลบหรือไม่?')"
+                                <a href="{{ route('admin_CategoryDelete', ['cid' => $item->category_id , 'form_id'=>$item->form_id]) }}" class="btn btn-danger" onclick="return confirm('ข้อตรวจในหัวข้อหลักจะถูกลบไปด้วย ยืนยันการลบหรือไม่?')"
                                 data-bs-toggle="tooltip"
                                     data-bs-placement="top" data-bs-custom-class="custom-tooltip"
                                     data-bs-title="ลบหมวดหมู่" >

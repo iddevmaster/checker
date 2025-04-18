@@ -16,7 +16,7 @@
                         </div>
                     
                           <div class="mb-3">
-                            <label for="form_name" class="form-label">ชื่อหมวดหมู่ :: {{$row->category_name}}</label>
+                            <label for="form_name" class="form-label">ชื่อหัวข้อ :: {{$row->category_name}}</label>
                           </div>
                           
 

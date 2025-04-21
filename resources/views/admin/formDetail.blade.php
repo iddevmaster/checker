@@ -33,17 +33,11 @@
                             <td><a class="text-decoration-none" href="{{route('admin_formDetailChoice',['id'=>$item->category_id])}}">{{$item->category_name}}</a></td>
                             <td>  
                                  <div class="btn-group btn-group-sm" role="group" >
-                                    
-                                <a href="{{route('admin_CategoryEdit',['id'=>$item->category_id])}}" class="btn btn-warning"
-                                data-bs-toggle="tooltip"
-                                    data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="แก้ไขหมวดหมู่"
-                                ><i class="las la-pen"></i></a>
+                                    <a href="{{route('admin_formDetailChoice',['id'=>$item->category_id])}}" class="btn btn-success" >เพิ่มข้อตรวจ</a>
+                                <a href="{{route('admin_CategoryEdit',['id'=>$item->category_id])}}" class="btn btn-warning"                             
+                                >แก้ไขชื่อหัวข้อ</a>
                                 <a href="{{ route('admin_CategoryDelete', ['cid' => $item->category_id , 'form_id'=>$item->form_id]) }}" class="btn btn-danger" onclick="return confirm('ข้อตรวจในหัวข้อหลักจะถูกลบไปด้วย ยืนยันการลบหรือไม่?')"
-                                data-bs-toggle="tooltip"
-                                    data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="ลบหมวดหมู่" >
-                                    <i class="las la-trash-alt"></i>
+                                >ลบหัวข้อ</i>
                                 </a>
                             </div>
                         </td>

@@ -15,30 +15,26 @@
                                     @else
                                         <img src="{{ asset($row->user_logo) }}" class="img-thumbnail" width="80px">
                                     @endif
-
                                 </div>
                                 <div class="col-md-9">
                                     <h5 class="card-title">{{ $row->fullname }}</h5>
                                     <a href="{{ route('admin_AgentEdit', ['id' => request()->id]) }}"
                                         class="btn btn-sm btn-secondary">แก้ไขข้อมูล</a>
                                 </div>
-
-
                             </div>
-                            <hr>
+                    <hr>
                             <div class="d-grid gap-2 d-md-block">
                                 <div class="btn-group" role="group">
                                 <a href="{{ route('admin_CreateAgentUser', ['id' => request()->id]) }}"
                                     class="btn btn-outline-primary btn-sm">สร้างผู้ใช้ในหน่วยงาน </a>
                                 <a href="{{ route('admin_ConfigDashboard', ['id' => request()->id]) }}"
                                     class="btn btn-outline-success btn-sm">ตั้งค่าระบบ</a>
-                                <a href="{{ route('admin_ConfigForm', ['id' => request()->id]) }}" class="btn btn-outline-dark btn-sm">ตั้งค่าฟอร์ม</a>
+                                <!--<a href="{{ route('admin_ConfigForm', ['id' => request()->id]) }}" class="btn btn-outline-dark btn-sm">ตั้งค่าฟอร์ม</a>-->
                                 <a href="{{ route('admin_ConfigRole', ['id' => request()->id]) }}" class="btn btn-outline-primary btn-sm">ตั้งค่าหมวดหมู่การใช้งาน</a>
                                 </div>
                             </div>
                     @endforeach
-
-                    <br>
+                                <br>
                     <div class="table-responsive">
                         <table class="table cell-border hover" id="dataTables">
                             <thead>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminConfigController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\CompanyController;
+use App\Http\Controllers\User\CompanyProductController;
 use App\Http\Controllers\User\CompanyReportController;
 use App\Http\Controllers\CompanyConfigController;
 use App\Http\Controllers\User\LeaderController;
@@ -94,6 +95,9 @@ Route::prefix('admin')->group(function(){
     Route::post('/InsertConfigForm/{id}',[AdminConfigController::class, 'InsertConfigForm'])->name('admin_InsertConfigForm');
     Route::delete('/UnlistForm',[AdminConfigController::class, 'UnlistForm'])->name('admin_UnlistForm');
 
+    Route::post('/InsertConfigRole/{id}',[AdminConfigController::class, 'InsertConfigRole'])->name('admin_InsertConfigRole');
+    Route::delete('/UnlistRole',[AdminConfigController::class, 'UnlistRole'])->name('admin_UnlistRole');
+
 
 })->middleware(['auth','role:admin']);
 
@@ -166,6 +170,9 @@ Route::prefix('company')->group(function(){
    
    //สรุปรายงาน
    Route::get('/reportlist/{form}',[CompanyReportController::class, 'ReportList'])->name('company_reportlist');
+
+   //อุปกรณ์
+   Route::get('/productlist/{role}/{add}',[CompanyProductController::class, 'ProductList'])->name('company_productlist');
   
 
 })->middleware(['auth','role:company']);

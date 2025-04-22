@@ -10,17 +10,14 @@
     <title>E-Checker By ID Drives</title>
     
     <!-- Fonts -->
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel= "stylesheet"  href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+   
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-   
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="
-https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css
-" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="icon" href="{{ asset('favicon.png') }}">
@@ -114,28 +111,25 @@ https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-date
     )
 </script>
 @endif
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.js"></script>
 <script>
-    $(function(){
-        $("#dataTables").DataTable(
-            {
-                "pageLength": 25,
-                "language": {
-                    "info":"แสดงผล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                    "search":"ค้นหา:",
-                    "lengthMenu":"แสดงผล _MENU_ รายการ",
-                    "zeroRecords":"ไม่พบข้อมูล",
-                    "paginate": {
-                        "next":"ถัดไป",
-                        "previous":"ก่อนหน้า"
-                    }
+    $(function() {
+        $("#dataTables").DataTable({
+            "pageLength": 25,
+            "language": {
+                "info": "แสดงผล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                "search": "ค้นหา:",
+                "lengthMenu": "แสดงผล _MENU_ รายการ",
+                "zeroRecords": "ไม่พบข้อมูล",
+                "paginate": {
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
                 }
-            });
+            }
+        });
     });
 </script>
-
     
 </body>
 </html>

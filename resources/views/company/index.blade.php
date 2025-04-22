@@ -10,7 +10,6 @@
 
                         @foreach ($user_detail as $item)
                             <div class="container text-center">
-
                                 <div class="row">
                                     <div class="col-4">
                                         @if ($item->user_logo == '0')
@@ -26,9 +25,25 @@
                             </div>
                         @endforeach
 
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            
+                        <div class="row mt-2">
+                            <!--Role-->
+                            @foreach ($company_role as $row)
+                                <div class="col col-md-6 mt-2">
+                                    <a href="{{route('company_productlist',['role' => $row->id ,'add'=>'none'])}}" class="text-decoration-none">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="{{ asset('images/checklist.png') }}"
+                                                    style="width: 35px; height: 35px" />
+                                                {{ $row->role_name }}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                            <!--EndRole-->
+                        </div>
 
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
                             <!-------------------------------->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingTruck">
@@ -47,31 +62,30 @@
                                 <div id="flush-collapseTruck" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingTruck" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                     
 
                                         <ul class="list-group list-group-flush">
-                                           
-                                            
-                                          <li class="list-group-item">
-                                            <a href="{{route('company_TransportList',['id'=>Auth::user()->user_id])}}" class="btn btn-sm btn-outline-primary">
-                                            รายชื่อบริษัท</a>  
-                                             <a href="{{route('company_TransportCreate')}}" class="btn btn-sm btn-outline-success">
-                                                เพิ่มบริษัทใหม่</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <a href="{{route('company_trucklist')}}" class="btn btn-sm btn-primary">
-                                                รายการทะเบียนรถ</a>
-                                                <a href="{{route('company_newtruck2')}}" class="btn btn-sm btn-success">
+
+                                            <li class="list-group-item">
+                                                <a href="{{ route('company_TransportList', ['id' => Auth::user()->user_id]) }}"
+                                                    class="btn btn-sm btn-outline-primary">
+                                                    รายชื่อบริษัท</a>
+                                                <a href="{{ route('company_TransportCreate') }}"
+                                                    class="btn btn-sm btn-outline-success">
+                                                    เพิ่มบริษัทใหม่</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="{{ route('company_trucklist') }}" class="btn btn-sm btn-primary">
+                                                    รายการทะเบียนรถ</a>
+                                                <a href="{{ route('company_newtruck2') }}" class="btn btn-sm btn-success">
                                                     เพิ่มรถใหม่</a>
-                                        </li>
-                                       
-                                          
-                                            </ul>
+                                            </li>
+
+                                        </ul>
 
                                     </div>
                                 </div>
                             </div>
-<!-------------------------------->
+                            <!-------------------------------->
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -92,14 +106,13 @@
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <ul class="list-group list-group-flush">
-                                        @foreach ($form_list as $item)
-                                        
-                                      <li class="list-group-item">
-                                        <a href="{{route('company_reportlist',['form'=>$item->form_id])}}" class="btn btn-sm btn-outline-secondary">
-                                        {{$item->form_name}}</a>
-                                    </li>
-                                           
-                                        @endforeach
+                                            @foreach ($form_list as $item)
+                                                <li class="list-group-item">
+                                                    <a href="{{ route('company_reportlist', ['form' => $item->form_id]) }}"
+                                                        class="btn btn-sm btn-outline-secondary">
+                                                        {{ $item->form_name }}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -124,20 +137,20 @@
                                     <div class="accordion-body">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">
-                                              <a href="{{route('company_listuser',['type'=>'user'])}}"> ผู้ใช้ทั่วไป/ผู้เรียน </a> 
+                                                <a href="{{ route('company_listuser', ['type' => 'user']) }}">
+                                                    ผู้ใช้ทั่วไป/ผู้เรียน </a>
                                             </li>
                                             <li class="list-group-item">
-                                                <a href="{{route('company_listuser',['type'=>'leader'])}}">   เจ้าหน้าที่/หัวหน้าฝ่าย </a> 
+                                                <a href="{{ route('company_listuser', ['type' => 'leader']) }}">
+                                                    เจ้าหน้าที่/หัวหน้าฝ่าย </a>
                                             </li>
-                                          </ul>
+                                        </ul>
 
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
-
-
 
 
                     </div>

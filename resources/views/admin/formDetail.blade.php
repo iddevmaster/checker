@@ -8,15 +8,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">  
-         
+                @foreach ($formName as $row) 
+                <h4 class="card-header text-center">ชื่อฟอร์ม :: {{$row->form_name}}</h4>
+
                 <div class="card-body">
-                   @foreach ($formName as $row)       
-                    <p style="#">ชื่อฟอร์ม :: {{$row->form_name}}</p>
-                    <a href="{{route('admin_formPreview',['id'=>$row->form_id])}}" class="btn btn-sm btn-outline-success">
+                        
+                    <a href="{{route('admin_formPreview',['id'=>$row->form_id])}}" class="btn  btn-outline-success">
                         <i class="las la-clipboard-check"></i> ตัวอย่างฟอร์ม
                     </a>
                     @endforeach
-                    <table class="table table-hover">
+                    <table class="table table-hover mt-2">
                         <thead>
                           <tr>
                             <th scope="col">#</th>

@@ -29,7 +29,7 @@
                                     class="btn btn-outline-primary btn-sm">สร้างผู้ใช้ในหน่วยงาน </a>
                                 <a href="{{ route('admin_ConfigDashboard', ['id' => request()->id]) }}"
                                     class="btn btn-outline-success btn-sm">ตั้งค่าระบบ</a>
-                                <!--<a href="{{ route('admin_ConfigForm', ['id' => request()->id]) }}" class="btn btn-outline-dark btn-sm">ตั้งค่าฟอร์ม</a>-->
+                               <!-- <a href="{{ route('admin_ConfigForm', ['id' => request()->id]) }}" class="btn btn-outline-dark btn-sm">ตั้งค่าฟอร์ม</a>-->
                                 <a href="{{ route('admin_ConfigRole', ['id' => request()->id]) }}" class="btn btn-outline-primary btn-sm">ตั้งค่าหมวดหมู่การใช้งาน</a>
                                 </div>
                             </div>

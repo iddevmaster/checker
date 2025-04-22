@@ -24,19 +24,31 @@
                                     <th scope="col">ตั้งค่า</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                               <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                               </tr>
+                            <tbody>  
+                                <form action="{{route('admin_UnlistRole')}}" method="POST">
+                                @csrf
+                                @foreach ($role_agent_list as $data)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $data->role_name }}</td>
+                                    <td>
+                                    @method('DELETE')
+                            <input type="hidden" name="user_id" value="{{ $data->user_id }}">
+                            <input type="hidden" name="company_role" value="{{ $data->company_role }}">
+                            <button class="btn btn-sm btn-outline-danger" 
+                            onclick="return confirm('ต้องการนำหมวดหมู่ออก ใช่หรือไม่?');"
+                            type="submit">นำออก</button>                        
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </form>
                             </tbody>
                         </table>
-
-
+                        
                         <hr>
                         <h5>เลือกสิทธิ์</h5>
-                        <form action="#" method="POST">
+
+                        <form action="{{ route('admin_InsertConfigRole', ['id' => request()->id]) }}" method="POST">
                             @csrf
                             @foreach ($role_list as $item)
                                 <div class="form-check mb-3">

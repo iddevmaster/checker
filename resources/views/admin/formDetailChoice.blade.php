@@ -9,13 +9,13 @@
             <div class="col-md-10">
                 <div class="card">
                     @foreach ($categoryName as $row)
-                        <div class="card-header">หัวข้อ :: {{ $row->category_name }}</div>
+                        <div class="card-header fs-4">หัวข้อ :: {{ $row->category_name }}</div>
                     @endforeach
 
 
                     <div class="card-body">
                         <p><a href="{{ route('admin_AddChoice', ['id' => request()->id]) }}"
-                                class="btn btn-sm btn-info">เพิ่มข้อตรวจ</a></p>
+                                class="btn btn-success"><i class="las la-plus"></i> เพิ่มข้อตรวจ</a></p>
 
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -38,7 +38,11 @@
                                             <img src="{{ asset('file/'.$item->choice_img) }}" width="120px" alt="">
                                         @endif
                                     </td>
-                                        <td>{{ $item->form_choice }}</td>
+                                        <td>{{ $item->form_choice }}
+                                            @if ($item->choice_remark != "")
+                                            <br> ({{$item->choice_remark}})
+                                            @endif                         
+                                        </td>
                                         <td>
                                             @if ($item->choice_type == '1')
                                     ข้อความ
@@ -49,7 +53,7 @@
                                 @elseif($item->choice_type == '4')
                                 ตัวเลข
                                 @elseif($item->choice_type == '5')
-                                ตัวเลือก (ผ่าน/ไม่ผ่าน)
+                                ตัวเลือก (ปกติ/ไม่ปกติ)
                                 @elseif($item->choice_type == '6')
                                 ตัวเลือก (น้ำมัน/NGV)
                                 @elseif($item->choice_type == '7')
@@ -60,16 +64,16 @@
                                            
                                                 <a href="{{ route('admin_ChoiceEdit', ['id' => $item->id]) }}"
                                                     class="btn btn-sm btn-warning">
-                                                    <i class="las la-pen"></i>
+                                                   แก้ไข
                                                 </a>
 
                                                 <a href="{{ route('admin_ChoiceEditPic', ['id' => $item->id]) }}"
                                                     class="btn btn-sm btn-success">
-                                                    <i class="las la-image"></i>
+                                                    เพิ่มภาพ
                                                 </a>
 
                                                 <a href="{{ route('admin_ChoiceDelete', ['id' => $item->id , 'cid'=>$item->category_id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('ยืนยันการลบหรือไม่?')">
-                                                    <i class="las la-trash-alt"></i>
+                                                    ลบ
                                                 </a>
                                            
                                         </td>

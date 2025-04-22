@@ -26,13 +26,19 @@ class CompanyController extends Controller
             ->where('user_id', '=', $agent_id)
             ->get();
 
+            $company_role = DB::table('company_role')
+            ->join('role','company_role.company_role','=','role.id')
+            ->where('company_role.user_id','=',$agent_id)
+            ->where('company_role.active_status','=','1')
+            ->get();
+
         $form_list = DB::table('agent_form_lists')
             ->join('form_chks', 'agent_form_lists.form_id', '=', 'form_chks.form_id')
             ->select('form_chks.form_name', 'form_chks.form_category', 'agent_form_lists.*')
             ->where('agent_form_lists.agent_id', '=', $agent_id)
             ->get();
 
-        return view('company.index', compact('user_detail', 'form_list'));
+        return view('company.index', compact('user_detail', 'form_list','company_role'));
     }
 
     public function ListForm()

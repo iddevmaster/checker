@@ -16,9 +16,9 @@
                         <table class="table table-bordered" id="dataTables">
                             <thead class="table-primary">
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th>หมวดหมู่</th>
+                                    <th scope="col">#</th>                                  
                                     <th scope="col">ชื่อฟอร์ม</th>
+                                    <th>หมวดหมู่</th>
                                     <th>สถานะ</th>
                                     
                                     <th scope="col">ตั้งค่า</th>
@@ -34,8 +34,9 @@
                                             @php
                                                 echo $i++;
                                             @endphp</th>
+                                            <td>{{ $item->form_name }}</td>
                                                <td> {{$item->role_name}} </td>
-                                        <td>{{ $item->form_name }}</td>
+                                        
                                         <td>
                                             @if ($item->form_status == '1')
                                                 <span class="badge text-bg-success">เปิด</span>

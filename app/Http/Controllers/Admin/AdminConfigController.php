@@ -7,6 +7,7 @@ use App\Models\formChk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Laravel\Facades\Image;
 
@@ -84,10 +85,6 @@ class AdminConfigController extends Controller
         $form_id = $request->form_id;
         $agent_id = $request->agent_id;
         DB::table('agent_form_lists')->where('form_id','=',$form_id)
-        ->where('agent_id','=',$agent_id)
-        ->delete();
-
-        DB::table('agent_form_pers')->where('form_id','=',$form_id)
         ->where('agent_id','=',$agent_id)
         ->delete();
 
@@ -174,24 +171,48 @@ class AdminConfigController extends Controller
         ->where('user_id','=',$id)
         ->get();
 
-        $agent_role = DB::table('company_role')->select('company_role')
+        $company_role = DB::table('company_role')->select('company_role')
         ->where('user_id','=',$id);
       
         $role_list = DB::table('role')
-        ->whereNotIn('id', $agent_role)
+        ->whereNotIn('id', $company_role)
         ->get();
 
         $role_agent_list = DB::table('role')
         ->leftJoin('company_role','role.id','=','company_role.company_role')
         ->select('role.role_name','company_role.*')
-        ->where('company_role.company_role','=',$id)
+        ->where('company_role.user_id','=',$id)
+        ->where('company_role.active_status','=','1')
         ->get();
 
         return view('admin.ConfigRole',['id'=>$id],compact('role_list','agent','role_agent_list'));
     }
 
-    //public function InsertConfigRole ($id,Request $request) 
-   // {
-   //}
+    public function InsertConfigRole ($id,Request $request) 
+    {
+        foreach ($request->role_chk as $key => $value) {
+            DB::table('company_role')->insert([
+                'user_id'=>$id,
+                'company_role'=>$value,
+                'active_status'=>'1',   
+                'created_by' => Auth::user()->user_id,
+                'created_at' => Carbon::now()
+            ]);
+        } 
+
+        return redirect()->route('admin_ConfigRole',['id'=>$id])->with('success','บันทึกเรียบร้อยแล้ว'); 
+   }
+
+   public function UnlistRole (Request $request)
+   {
+    $role_id = $request->company_role;
+    $user_id = $request->user_id;
+
+    DB::table('company_role')->where('company_role','=',$role_id)
+    ->where('user_id','=',$user_id)
+    ->delete();
+
+    return redirect()->route('admin_ConfigRole',['id'=>$user_id])->with('success','ดำเนินการสำเร็จ');    
+   }
 
 }

@@ -30,10 +30,9 @@ class AdminHomeController extends Controller
             ->select('form_chks.form_id', 'form_chks.form_name', 'role_forms.role_id', 'role.role_name', 'form_chks.form_status')
             ->leftJoin('role_forms', 'form_chks.form_id', '=', 'role_forms.form_id')
             ->leftJoin('role', 'role_forms.role_id', '=', 'role.id')
+            ->orderBy('form_chks.created_at','DESC')
             ->get();
-
             
-
         return view('admin.list_form', compact('list_form'));
     }
 
@@ -189,6 +188,7 @@ class AdminHomeController extends Controller
                 'form_id' => $form_id,
                 'category_id' => $id,
                 'form_choice' => $request->addmore[$i],
+                'choice_remark' => $request->addmark[$i],
                 'choice_type' => $request->choice_type[$i],
                 'created_at' => Carbon::now()
             ]);
@@ -236,6 +236,7 @@ class AdminHomeController extends Controller
         DB::table('form_choices')->where('id', '=', $id)
             ->update([
                 'form_choice' => $request->choiceEdit,
+                'choice_remark' => $request->choice_remark,
                 'choice_type' => $request->choice_type,
                 'updated_at' => Carbon::now()
             ]);
